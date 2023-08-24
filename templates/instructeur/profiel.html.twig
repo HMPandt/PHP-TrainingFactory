@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+    <div class="example-wrapper">
+
+        <div class="container">
+            <div class="row">
+                <h2 class="text-success">Welkom terug, Instructeur {{ app.user.firstname }}</h2>
+                <h3 class="">Personelijk Gegevens</h3>
+                <div class="col-md-6 m-2">
+                    <p>username: {{ app.user.username }} </p>
+                    <p>first name: {{ app.user.firstname }} </p>
+                    <p>last name: {{ app.user.lastname }} </p>
+                    {#                    <p>verjaardag: {{ app.user.dateofbirth("d/m/y") }} </p>#}
+                </div>
+                <div class="col-md-6 m-2">
+                    <p>adres: {{ app.user.adres }} </p>
+                    <p>city: {{ app.user.city }} </p>
+
+                </div>
+                <a class="btn btn-warning" href="{{ path('editProfile', {id: app.user.id}) }}">gegevens wijzigen</a>
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}

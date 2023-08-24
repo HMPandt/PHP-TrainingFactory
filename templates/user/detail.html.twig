@@ -1,0 +1,37 @@
+{% extends './base.html.twig' %}
+{% block body %}
+    <div class="bg-dark">
+        <div class="row">
+            <img class="img img-fluid" style="width: 100%; height: 550px; "  src=" ../../img/{{ trainings.image }} " alt="">
+        </div>
+
+        <div class="row m-4 g-4" >
+            <h1 class="text-success text-center">Trainingen Aanbod!</h1>
+        </div>
+        <div class="row">
+            <table class="table table-success table-striped border-4 border-top border-dark">
+
+                <tbody>
+                    {% for lesson in trainings.lessons %}
+                        <tr>
+                            <td>{{ lesson.training.name }}</td>
+                             <td>Time: {{ lesson.time|date("h:i") }}</td>
+                            <td>Date: {{ lesson.date|date("d/m/Y") }}</td>
+                            <td>{{ lesson.location }}</td>
+                            <td>Duration: {{ lesson.training.duration }}</td>
+                            <td> max people: {{ lesson.maxpersons }}</td>
+                            <td><button class="btn btn-success"><a class="text-decoration-none text-light" href="{{ path('inschrijven', {id: lesson.id}) }}">Inschrijven voor Training</a></button></td>
+                        </tr>
+                    {% endfor %}}}
+                </tbody>
+            </table>
+
+             <br>
+
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

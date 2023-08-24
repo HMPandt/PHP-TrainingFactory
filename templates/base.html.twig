@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}TrainingFactory{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        {% endblock %}
+    </head>
+    <body>
+    <h1 class="text-center">Training Factory Denhaag</h1>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a><img class="img img-fluid" style="height: 40px" src="{{ asset('img/gymLogo.png') }}" alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ path('home') }}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('aanbod') }}">Our Trainings</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('rules') }}">Rules</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('contact') }}">Contact</a>
+                        </li>
+                    {% elseif is_granted('ROLE_ADMIN') %}
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ path('admin') }}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('adminInstructor') }}">Instructeur</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('adminLeden') }}">leden</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('adminTraining') }}">trainingsvormen</a>
+                        </li>
+                    {% elseif is_granted('ROLE_INSTRUCTEUR') %}
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ path('instructeur') }}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('lestable') }}">lestabel</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('profiel') }}">profiel</a>
+                        </li>
+                    {% elseif is_granted('ROLE_MEMBER') %}
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ path('user') }}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('aanbodLid') }}">Our Trainings</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('profile') }}">Personelijke Profiel</a>
+                        </li>
+
+
+                    {% endif %}
+                </ul>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    {% if not is_granted('IS_AUTHENTICATED_FULLY') %}#}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('login') }}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('register') }}">register</a>
+                        </li>
+                    {% elseif is_granted('ROLE_MEMBER') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('logout') }}">Logout</a>
+                        </li>
+
+                    {% elseif is_granted('ROLE_INSTRUCTEUR') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('logout') }}">Logout</a>
+                        </li>
+
+                    {% elseif is_granted('ROLE_ADMIN') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('logout') }}">Logout</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+        {% block body %}{% endblock %}
+    <footer class="footer">
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            Copyright@TrainingFactoryDenhaag
+        </div>
+    </footer>
+    </body>
+</html>

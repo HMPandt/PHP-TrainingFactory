@@ -1,0 +1,32 @@
+{% extends './base.html.twig' %}
+{% block body %}
+    <div class="bg-dark">
+        <div class="row">
+            <img class="img img-fluid" style="width: 100%; height: 550px; "  src=" ../../img/{{ training.image }} " alt="">
+        </div>
+
+        <div class="row m-4 g-4" >
+            <h1 class="text-success text-center">Trainingen Aanbod!</h1>
+        </div>
+        <div class="row">
+
+            <div class="col-md-12">
+
+               <h1 class="text-success">{{ training.name }}</h1> <br>
+                <p class="text-success">
+                    <br>
+                    Duration: {{ training.duration }} <br>
+                    Max people: {{ training.duration }} <br>
+                    Time: {{ training.duration }} <br>
+
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

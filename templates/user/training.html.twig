@@ -1,0 +1,26 @@
+{% extends './base.html.twig' %}
+{% block body %}
+
+        <div class="row m-4 g-4 " >
+            <h1 class="text-success text-center">Trainingen Aanbod!</h1>
+        </div>
+        <div class="row text-center">
+            {% for training in trainingen %}
+                <div class="col-md-4">
+                    <div class="card bg-dark text-success mt-4">
+                        <img class="img img-fluid" style="height: 350px"  src="../img/{{ training.image }}" alt="">
+                        <div class="card-body">
+
+                            <div class="card-text">
+                               <p>{{ training.name }}</p>  <br>
+                                <button class="btn btn-success"><a class="text-decoration-none text-light" href="{{ path('detailLid', {id: training.id}) }}">klik hier</a></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+
+
+{% endblock %}

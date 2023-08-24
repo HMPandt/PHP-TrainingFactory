@@ -1,0 +1,31 @@
+{% extends './base.html.twig' %}
+{% block body %}
+
+    <div class="row m-4" >
+        <h1 class="text-success text-center">Get In Touch?</h1>
+        <div class="col-md-6  pt-5">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-text">
+                        <h5 class="text-success">Contact Informatie</h5>
+                        <p>Email : TrainingFactory@Hotmail.com<br>
+                            Phone: 06161234567<br>
+                            Adres: Gym street 34, 1234 AB, Den Haag<br>
+                        </p>
+                        <h5 class="text-success">OpeningsTijd</h5>
+                        <p>Maandag-Vrijdag: 9:00 – 20:00<br>
+                            Zaterdag: 9:00 – 18:00<br>
+                            Zondag: 12:00 – 17:00<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="embed-responsive embed-responsive-100x400px">
+                <iframe src="https://maps.google.com/maps?q=denhaag&t=&z=13&ie=UTF8&iwloc=&output=embed" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

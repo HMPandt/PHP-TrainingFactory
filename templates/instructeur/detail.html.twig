@@ -1,0 +1,37 @@
+{% extends './base.html.twig' %}
+{% block body %}
+    <div class="bg-dark">
+        <div class="row">
+            <img class="img img-fluid" style="width: 100%; height: 550px; "  src=" ../../img/{{ lesson.training.image }} " alt="">
+        </div>
+        <div class="container text-bold">
+            <div class="row m-4 g-4" >
+                <h1 class="text-success">{{ lesson.training.name }}</h1>
+            </div>
+            <div class="card">
+
+            </div>
+            <div class="row">
+
+                <div class="col-md-12">
+                    <br>
+                    <p class="text-success text-bold">
+                        <br>
+                        Time: {{ lesson.time|date("h:i") }} <br>
+                        Date: {{ lesson.date|date("d/m/Y") }} <br>
+                        Location: {{ lesson.location }} <br>
+                        Max people: {{ lesson.maxpersons }}
+                    </p>
+                    <button class="btn btn-success mt-3 mb-3" ><a class="text-decoration-none text-light" href="{{ path('deelnemers', {id: lesson.id}) }}">Ga naar deelnemerlijst</a> </button>
+                    <button class="btn btn-success mt-3 mb-3" ><a class="text-decoration-none text-light" href="{{ path('lestable') }}">Ga terug</a> </button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello InstructeurController!{% endblock %}
+
+{% block body %}
+
+    <table class="table table-success table-striped border-4 border-top border-dark">
+
+        <tbody>
+        {% for user in users %}
+            {% if 'ROLE_INSTRUCTEUR' in user.roles %}
+            <tr>
+                <td>{{ user.username }}</td>
+                <td>{{ user.firstname }}</td>
+                <td> {{ user.lastname }}</td>
+                <td> {{ user.adres }}</td>
+                <td> {{ user.city }}</td>
+{#                <td> <button class="btn btn-outline-dark"><a class="text-decoration-none" href="{{ path('adminTrainingUpdate', {id: training.id}) }}"> <i class="bi bi-pencil-square"></i></a></button></td>#}
+                <td> <button class="btn btn-outline-danger"><a class="text-decoration-none" href="{{ path('adminInstructorDelete', {id: user.id}) }}"><i class="bi bi-trash3"></i></a></button></td>
+            </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+    <button class="btn btn-success mt-3 mb-3" ><a class="text-decoration-none text-light" href="{{ path('adminInstructorInsert') }}">Toevoegen</a></button>
+{% endblock %}
